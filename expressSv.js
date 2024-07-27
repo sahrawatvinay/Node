@@ -1,10 +1,9 @@
 const express = require("express");
 const app = express();
+const routes = require("./routes");
+console.log(routes);
 
-const userRouter = require("./routes/users");
-app.use("/users", userRouter); //linking a route into main app, linking route to particular path
-const postsRouter = require("./routes/posts");
-app.use("/posts", postsRouter);
+app.use("/", routes);
 
 app.get("/", (req, res) => {
   console.log("inside get route");
