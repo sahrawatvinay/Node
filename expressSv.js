@@ -1,17 +1,14 @@
 const express = require("express");
 const app = express();
 
+const userRouter = require("./routes/users");
+app.use("/users", userRouter); //linking a route into main app, linking route to particular path
+const postsRouter = require("./routes/posts");
+app.use("/posts", postsRouter);
+
 app.get("/", (req, res) => {
   console.log("inside get route");
   res.send("GG express");
-});
-
-app.get("/users", (req, res) => {
-  res.send("Users List");
-});
-
-app.get("/users.new", (req, res) => {
-  res.send("User New Form");
 });
 
 app.listen(8000, () => {
