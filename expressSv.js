@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const routes = require("./routes");
-console.log(routes);
 
 app.use("/", routes);
 
