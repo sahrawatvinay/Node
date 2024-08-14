@@ -1,0 +1,60 @@
+1. Closures : Closure is a powerful concept in JavaScript that allows a function to retain access to its lexical scope, even after the function has finished executing. 
+	In simpler terms, a closure gives you access to an outer function's scope from an inner function, even after the outer function has returned.
+	function outerFunction() {
+		let outerVariable = 'I am from outer function';
+		function innerFunction() {
+			console.log(outerVariable);
+		}
+		return innerFunction;
+	}
+	const myClosure = outerFunction(); // outerFunction() returns innerFunction
+	myClosure(); // "I am from outer function"
+	
+2. Hoisting :
+	Hoisting moves variable and function declarations to the top of their scope during compilation.
+	var declarations are hoisted and initialized with undefined.
+	Function declarations are fully hoisted, so you can call them before they are defined.
+	let and const declarations are hoisted but not initialized, leading to a temporal dead zone.
+	
+3. Variable typing : type of variable used to store a no. and that same variable is used to store string
+
+4. call and apply in JavaScript
+	call and apply are methods that let you call a function with a specific this context and pass arguments.
+	
+	function greet(greeting) {
+		console.log(greeting + ', ' + this.name);
+	}
+	const person = { name: 'John' };
+	greet.call(person, 'Hello'); // Output: "Hello, John"
+	call Method
+	Purpose: Calls a function with a given this value and arguments provided individually.
+	Syntax: functionName.call(thisArg, arg1, arg2, ...)
+	
+	function greet(greeting) {
+		console.log(greeting + ', ' + this.name);
+	}
+	const person = { name: 'John' };
+	greet.apply(person, ['Hello']); // Output: "Hello, John"
+	apply Method
+	Purpose: Calls a function with a given this value and arguments provided as an array.
+	Syntax: functionName.apply(thisArg, [arg1, arg2, ...])
+	
+5. A first-order function is a basic function that does not take other functions as arguments and does not return a function.
+
+6. A higher-order function is a function that either:
+	Takes one or more functions as arguments, or
+	Returns a function as its result.
+
+7. Temporal dead zone : 
+	The Temporal Dead Zone (TDZ) is the period between the entering of the scope (block, function, etc.) and the actual declaration of a let or const variable. 
+	During this time, the variable is in an uninitialized state and cannot be accessed, leading to a ReferenceError if you try to use it.
+
+8. 
+| Feature                 | `var`                               | `let`                                | `const`                                |
+|-------------------------|-------------------------------------|--------------------------------------|----------------------------------------|
+| **Scope**               | Function-scoped                     | Block-scoped                         | Block-scoped                           |
+| **Re-declaration**      | Allowed within the same scope       | Not allowed within the same scope    | Not allowed within the same scope      |
+| **Re-assignment**       | Allowed                             | Allowed                              | Not allowed                            |
+| **Hoisting**            | Hoisted with `undefined`            | Hoisted but not initialized          | Hoisted but not initialized            |
+| **Temporal Dead Zone**  | No (can be accessed before declared)| Yes (access before declaration gives an error) | Yes (access before declaration gives an error) |
+| **Initialization**      | Optional                            | Optional                             | Mandatory                              |
