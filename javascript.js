@@ -38,7 +38,7 @@ const promiseExample = () => {
     });
 };
 
-promiseExample.then((result) => {
+promiseExample().then((result) => {
     console.log(result);
 }).catch((ex) => {
     console.log(result);
@@ -202,3 +202,32 @@ console.log(sblArr);
 var stSet = new Set(nArr);
 console.log(stSet);
 var uniqElem = nArr.filter((value, index, self) => self.indexOf(value) === index);
+
+// Simulating three different asynchronous operations using Promises
+const fetchData1 = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve("Data from API 1");
+    }, 1000);
+});
+
+const fetchData2 = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve("Data from API 2");
+    }, 2000);
+});
+
+const fetchData3 = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve("Data from API 3");
+    }, 3000);
+});
+
+// Using Promise.all to wait for all promises to resolve
+Promise.all([fetchData1, fetchData2, fetchData3])
+    .then((results) => {
+        console.log("All data fetched:", results);
+        // Output: ["Data from API 1", "Data from API 2", "Data from API 3"]
+    })
+    .catch((error) => {
+        console.error("Error fetching data:", error);
+    });
