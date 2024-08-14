@@ -1,11 +1,11 @@
 // 1. Basic Data Types
-let stringVar = "Hello, World!";    // string
-let numberVar = 42;                 // number
-let booleanVar = true;              // boolean
-let nullVar = null;                 // object (null is a special case)
-let undefinedVar;                   // undefined
-let arrayVar = [1, 2, 3, 4, 5];     // object (arrays are objects in JS)
-let objectVar = { name: "John", age: 30 };// object
+let stringVar = "Hello, World!";            // string
+let numberVar = 42;                         // number
+let booleanVar = true;                      // boolean
+let nullVar = null;                         // object (null is a special case)
+let undefinedVar;                           // undefined
+let arrayVar = [1, 2, 3, 4, 5];             // object (arrays are objects in JS)
+let objectVar = { name: "John", age: 30 };  // object
 
 // 2. Arrow Functions
 const add = (a, b) => a + b;
@@ -26,15 +26,17 @@ userInfo("Vinay", "Sahrawat", greet);
 
 
 // 3. Promises
-const promiseExample = new Promise((resolve, reject) => {
-    try {
-        setTimeout(() => {
-            resolve("Promise resolved after 5 seconds");
-        }, 5000);
-    } catch (ex) {
-        reject(ex.message);
-    }
-});
+const promiseExample = () => {
+    return new Promise((resolve, reject) => {
+        try {
+            setTimeout(() => {
+                resolve("Promise resolved after 5 seconds");
+            }, 5000);
+        } catch (ex) {
+            reject(ex.message);
+        }
+    });
+};
 
 promiseExample.then((result) => {
     console.log(result);
@@ -76,6 +78,7 @@ for (var i = 0; i < fruits.length; i++)
 // 7. String (Basic Operations)
 let message = "Hello, JavaScript javascript!";
 console.log("\nString Operations:");
+console.log(message.charAt(2));
 console.log(message.length); // Length of the string
 console.log(message.toUpperCase()); // Convert to uppercase
 console.log(message.toLowerCase()); // Convert to lowercase
@@ -157,16 +160,45 @@ class Human {
     }
 }
 
-class Gender extends Human {
-    constructor(n, a, g) {
-        super(n, a);
-        this.gender = g;
-    }
-    getGender() {
-        console.log(`${this.name} is a ${this.gender}`);
-    };
-}
+// Structuring an object
+const user = {
+    username: 'john_doe',
+    email: 'john@example.com',
+    address: {
+        city: 'New York',
+        zip: '10001'
+    },
+    isActive: true
+};
 
-var gg = new Gender("Vinay", 28, "Male");
-gg.getGender();
-gg.getDetails();
+// Destructuring the 'user' object
+const { username, email, address: { city, zip }, isActive } = user;
+
+//Rest parameters
+function sum(...numbers) { //n number of args to array
+    return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sum(1, 2, 3, 4)); // 10
+console.log(sum(5, 10));      // 15
+
+// For arrays Spread parameters
+const arr = [1, 2, 3];
+const newArr = [...arr, 4, 5]; // Expands arr and adds more elements
+
+// CRUD cookie
+// The ReferenceError: document is not defined error occurs because document is part of the browser's DOM (Document Object Model) and isn't available in server-side environments like Node.js.
+// document.cookie = "username=JohnDoe; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+// const usernamecookie = getCookie('username');
+// console.log(usernamecookie); // Outputs the value of the 'username' cookie or '' if not found
+// document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+
+let nArr = [1, 4, 5, 6, 3, 2, 1, 2, 2, 3];
+let sumnArr = nArr.reduce((accumulator, currVal) => accumulator + currVal, 0);
+console.log(sumnArr);
+let evenArr = nArr.filter((curr) => curr % 2 == 0);
+console.log(evenArr);
+let sblArr = nArr.map((curr) => curr * 2);
+console.log(sblArr);
+var stSet = new Set(nArr);
+console.log(stSet);
+var uniqElem = nArr.filter((value, index, self) => self.indexOf(value) === index);
