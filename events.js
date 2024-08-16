@@ -15,11 +15,14 @@ class Person extends EventEmitter {
     super();
     this._name = name;
   }
+  getName() {
+    return this._name;
+  }
 }
 
 //when we use emit they will get created synchronously
 const Ram = new Person("Ram");
 Ram.on("create", () => {
-  console.log("Ram created" + Ram.name);
+  console.log("Ram created " + Ram.getName());
 });
 Ram.emit("create");
