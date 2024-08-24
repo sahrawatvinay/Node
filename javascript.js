@@ -216,6 +216,13 @@ const fetchData2 = new Promise((resolve) => {
     }, 2000);
 });
 
+
+const resFetchData2 = fetchData2.then((res) => {
+    console.log("res fetch 2 --- > " + res);
+}).catch((ex) => {
+    console.log("This is an error.");
+});
+
 const fetchData3 = new Promise((resolve) => {
     setTimeout(() => {
         resolve("Data from API 3");
